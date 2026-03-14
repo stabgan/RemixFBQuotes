@@ -1,20 +1,59 @@
 # RemixFBQuotes
 
-I created an interesting Python script which Web scrapes a random quote and it's author and post it as a facebook status  
+A Python script that scrapes a random quote from the web and posts it as your Facebook status using the Graph API.
 
-# *If you want to integrate it in your project or do anything it with , be sure to check LICENSE first .*
+## How It Works
 
-## I used the BeautifulSoap python module to scrap quotes from <i>[this site](http://www.quotationspage.com/random.php3)</i>
+1. Scrapes a random quote and its author from [quotationspage.com](https://www.quotationspage.com/random.php3)
+2. Formats the quote with attribution
+3. Posts it to your Facebook timeline via the Graph API
 
-### Then I used the GraphAPI of Facebook and using an ACCESS_TOKEN I connected to my account .
+## 🛠 Tech Stack
 
-# How to use it : 
-- You have to get an ACCESS TOKEN first from https://developers.facebook.com/tools/explorer
-- Clone this project or download .
-- Copy and Paste your ACCESS_TOKEN in the FacebookPost.py file through vim or any editor
-- Then Simply use <i>$ python FacebookPost.py</i> and open facebook to see the magic :D
+| Tool | Purpose |
+|------|---------|
+| 🐍 Python 3 | Core language |
+| 🍜 BeautifulSoup4 | HTML parsing and web scraping |
+| 🌐 Requests | HTTP client |
+| 📘 Facepy | Facebook Graph API wrapper |
 
-### Make a pull request too if you have any ideas .
+## Setup
 
-### Update : 24/12/2018 :
-Not maintaining it anymore
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/stabgan/RemixFBQuotes.git
+   cd RemixFBQuotes
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Get a Facebook access token from [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer)
+
+4. Paste your token into `RemixQuotes/FacebookPost.py`:
+   ```python
+   ACCESS_TOKEN = "your_token_here"
+   ```
+
+5. Run:
+   ```bash
+   cd RemixQuotes
+   python FacebookPost.py
+   ```
+
+You can also test the scraper standalone:
+```bash
+python RemixQuotes/webscrapper.py
+```
+
+## ⚠️ Known Issues
+
+- Facebook Graph API user tokens expire quickly; you need to regenerate them for each session
+- The `facepy` library is no longer actively maintained — consider migrating to the official `facebook-sdk` or raw HTTP requests
+- The quote scraper depends on the HTML structure of quotationspage.com, which may change without notice
+
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE) for details.
